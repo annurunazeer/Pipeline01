@@ -10,7 +10,7 @@ options {
     stages {
         stage('Compile') {
             steps {
-		bat 'mvn compile -DVer=$Version'
+		powershell 'mvn compile -DVer=$Version'
             }
         }
         
