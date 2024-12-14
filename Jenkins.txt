@@ -10,25 +10,25 @@ options {
     stages {
         stage('Compile') {
             steps {
-		powershell 'mvn compile -DVer=$Version'
+		powershell 'maven compile -DVer=$Version'
             }
         }
         
         
         stage('Junit') {
             steps {
-		bat 'mvn test -DVer=$Version'
+		bat 'maven test -DVer=$Version'
                   }
         }
         stage('Package') {
             steps {
-		bat 'mvn -DskipTests clean package -DVer=$Version'
+		bat 'maven -DskipTests clean package -DVer=$Version'
                   }
         }
 
         stage('Upload package into Nexus') {
             steps {
-		bat 'mvn -DskipTests deploy -DVer=$Version'
+		bat 'maven -DskipTests deploy -DVer=$Version'
                   }
         }        
         stage('Cleanup Workspace') {
