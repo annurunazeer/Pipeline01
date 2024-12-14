@@ -1,0 +1,24 @@
+pipeline {
+   agent {
+  label 'jenkins-master'
+         }
+  stages {
+        stage('checkout code from SCM') {
+            steps {
+                echo 'build steps'
+            }
+        }
+
+    stage('test') {
+            steps {
+                git branch: 'main', url: 'https://github.com/annurunazeer/Pipeline01.git'
+            }
+        }
+
+    stage('deploy') {
+            steps {
+                echo 'deploy steps'
+            }
+        }
+    }
+}
